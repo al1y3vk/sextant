@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SplitPane from './SplitPane'
+import Title from './Title'
 import './App.css';
 
 
@@ -7,7 +7,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SplitPane />
+        <Title titleText="Dashboard"/>
+        
       </div>
     );
   }
