@@ -44,11 +44,12 @@ function SplitPane(props) {
 
 function App() {
   return (
+    <Dialog
+    title="Welcome"
+    message="Thank you for visiting our spacecraft!" />,
     <SplitPane
       left={
-        <Dialog
-      title="Welcome"
-      message="Thank you for visiting our spacecraft!" />
+        <Contacts />
       }
       right={
         <Chat />
