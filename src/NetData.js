@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+const client = new W3CWebSocket('ws://localhost:55455');
 
 class NetData extends Component {
     constructor(props){
       super(props);
       this.state = {
-          url: props.url,
-          ipAddress: null
+          latency: null
       };
     }
 
     componentDidMount(){
-      fetch(this.state.url)
-          .then(response => response.json())
-          .then(data => this.setState({ipAddress: data.ip}));  
+      client.onmessage = (message) => {
+        this.setState({
+            latency: new Date().getTime() - message.data
+        })
+      };  
     }
 
     render(){
       return(
-          <div className="IPinfo">
-              {this.state.ipAddress}
+          <div className="NetData">
+              {this.state.latency}
           </div>
       );
     }
